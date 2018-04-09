@@ -1,5 +1,6 @@
 package demo
 
+import grails.util.Environment
 import groovy.transform.CompileStatic
 
 @CompileStatic
@@ -105,8 +106,11 @@ class BootStrap {
     BookDataService bookDataService
 
     def init = { servletContext ->
-        for (Map<String, String> bookInfo : (GRAILS_BOOKS + GROOVY_BOOKS)) {
-            bookDataService.save(bookInfo.title, bookInfo.author, bookInfo.about, bookInfo.href, bookInfo.image)
+
+        if ( Environment.current == Environment.DEVELOPMENT ) {
+            for (Map<String, String> bookInfo : (GRAILS_BOOKS + GROOVY_BOOKS)) {
+                bookDataService.save(bookInfo.title, bookInfo.author, bookInfo.about, bookInfo.href, bookInfo.image)
+            }
         }
     }
 

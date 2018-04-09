@@ -12,14 +12,14 @@ interface IBookDataService {
 
     Book findById(Long id)
 
-    void delete(Long id)
+    void delete(Long id) // <1>
 }
 
 @Service(Book)
 abstract class BookDataService implements IBookDataService {
 
     @ReadOnly
-    List<BookImage> findAll() {
+    List<BookImage> findAll() {  // <2>
         Book.where {}.projections {
             property('id')
             property('image')
@@ -28,9 +28,9 @@ abstract class BookDataService implements IBookDataService {
 
     @Transactional
     void unDelete(Long id) {
-        Book.withDeleted {
+        Book.withDeleted { // <3>
             Book book = Book.get(id)
-            book?.unDelete()
+            book?.unDelete() // <4>
         }
     }
 }

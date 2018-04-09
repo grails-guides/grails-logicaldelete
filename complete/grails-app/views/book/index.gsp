@@ -24,18 +24,19 @@
 </head>
 <body>
 <div id="content" role="main">
-    <g:if test="${undoId}">
-        <g:form method="post" controller="book" action="undoDelete" id="${undoId}">
-            <g:submitButton name="submit" value="${g.message(code: 'book.undoDelete', default: 'Undo')}"/>
-        </g:form>
-    </g:if>
     <g:if test="${flash.message}">
-        <div class="message">
-            ${flash.message}
-        </div>
+        <g:if test="${undoId}">
+            <g:form method="post" controller="book" action="undoDelete" id="${undoId}" class="message">
+                <g:submitButton name="submit" value="${g.message(code: 'book.undoDelete', default: 'Undo')}"/>
+                ${flash.message}
+            </g:form>
+        </g:if>
+        <g:else>
+            <div class="message">${flash.message}</div>
+        </g:else>
     </g:if>
 
-    <b><g:message code="books.total" args="[total]" default="Total number of Books: {0}"/></b>
+    <b><g:message code="books.total" default="Total number of Books"/><span id="totalNumberOfBooks">${total}</span></b>
     <section class="row">
         <g:each in="${bookList}" var="${book}">
             <div class="book">

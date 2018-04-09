@@ -4,7 +4,7 @@ import gorm.logical.delete.LogicalDelete
 import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
-class Book implements LogicalDelete<Book> {
+class Book implements LogicalDelete<Book> { // <1>
     String image
     String title
     String author
