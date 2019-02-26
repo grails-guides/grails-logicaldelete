@@ -1,2 +1,2 @@
 include 'complete'
-include 'complete-analytics'
+include 'initial'
