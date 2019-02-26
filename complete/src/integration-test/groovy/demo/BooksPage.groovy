@@ -4,7 +4,7 @@ import geb.Page
 
 class BooksPage extends Page {
 
-    static url = '/'
+    static url = '/book'
 
     static at = { title == 'Groovy & Grails Books'}
 
