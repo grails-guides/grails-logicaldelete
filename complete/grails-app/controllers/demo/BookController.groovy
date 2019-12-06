@@ -2,6 +2,7 @@ package demo
 
 import groovy.transform.CompileStatic
 import org.springframework.context.MessageSource
+import org.springframework.context.i18n.LocaleContextHolder
 
 @CompileStatic
 class BookController {
@@ -33,7 +34,7 @@ class BookController {
         flash.message = messageSource.getMessage('book.delete.undo',
                 [id] as Object[],
                 'Book deleted',
-                request.locale
+                LocaleContextHolder.locale
         )
         redirect(action: 'index', params: [undoId: id])
     }
@@ -43,7 +44,7 @@ class BookController {
         flash.message = messageSource.getMessage('book.unDelete',
                 [] as Object[],
                 'Book restored',
-                request.locale
+                LocaleContextHolder.locale
         )
         redirect(action: 'index')
     }
