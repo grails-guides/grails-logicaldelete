@@ -2,9 +2,7 @@ package demo
 
 import geb.spock.GebSpec
 import grails.testing.mixin.integration.Integration
-import spock.lang.IgnoreIf
 
-@IgnoreIf( { System.getenv('TRAVIS') as boolean } )
 @Integration
 class BooksUndoSpec extends GebSpec {
 
