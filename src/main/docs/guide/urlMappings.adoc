@@ -1,8 +1,0 @@
-Update our `UrlMappings.groovy` so that the default url displays the books grid.
-
-[source,groovy]
-.grails-app/controllers/demo/UrlMappings.groovy
-----
-include::{sourceDir}/grails-app/controllers/demo/UrlMappings.groovy[]
-----
-<1> Updated default URL
